@@ -1,0 +1,87 @@
+saved code (just in case)
+
+// const getParty = (request, response) => {
+//   const file = path.resolve(__dirname, '../client/party.mp4');
+
+//   fs.stat(file, (err, stats) => {
+//     if (err) {
+//       if (err.code === 'ENOENT') {
+//         response.writeHead(404);
+//       }
+//       return response.end(err);
+//     }
+
+//     let { range } = request.headers; // destructuring assignment
+//     // grab range element out of request.headers object and store it in a new variable
+//     // called range
+
+//     if (!range) {
+//       range = 'bytes=0-';// grab byte range to stream media element
+//       // What we need to do is grab the string, replace the word bytes= with nothing and
+//       // then that will give us 0000-0001. Then we can split on the - to get an array of
+//       // beginning and end positions. ['0000', '0001']. Alternatively, you could find another
+//       // way to split/parse the bytes=  string from the range header.
+//     }
+//     // next, parse first position (starting range) to an int
+//     // second parameter is what gives number base to use (base 10)
+
+//     const positions = range.replace(/bytes=/, '').split('-');
+
+//     let start = parseInt(positions[0], 10);
+
+//     const total = stats.size;
+//     const end = positions[1] ? parseInt(positions[1], 10) : total - 1;
+
+//     if (start > end) {
+//       start = end - 1;
+//     }
+
+//     const chunksize = (end - start) + 1;
+
+//     response.writeHead(206, {
+//       'Content-Range': `bytes ${start} - ${end}/${total}`,
+//       'Accept-Ranges': 'bytes',
+//       'Content-Length': chunksize,
+//       'Content-Type': 'video/mp4',
+//     });
+
+//     const stream = fs.createReadStream(file, { start, end });
+
+//     stream.on('open', () => {
+//       stream.pipe(response);
+//     });
+
+//     stream.on('error', (streamErr) => {
+//       response.end(streamErr);
+//     });
+
+//     return stream;
+//   });
+// };
+
+// module.exports.getParty = getParty;
+
+
+
+
+
+
+
+
+
+    // stream.on('open', () => {
+    //   stream.pipe(response);
+    // });
+
+    // stream.on('error', (streamErr) => {
+    //   response.end(streamErr);
+    // });
+
+
+
+    // response.writeHead(206, {
+    //   'Content-Range': `bytes ${start} - ${end}/${total}`,
+    //   'Accept-Ranges': 'bytes',
+    //   'Content-Length': chunksize,
+    //   'Content-Type': fileType,
+    // });
